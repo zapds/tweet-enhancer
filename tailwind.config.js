@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         'back': '#111111',
+        'accent': '#0A0A0A'
       }
     },
   },
