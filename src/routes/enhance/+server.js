@@ -32,7 +32,7 @@ export async function POST({ request }) {
             messages: [
                 {
                     role: 'system',
-                    content: `you are a tweet enhancer. rephrase and modify certain words or phrases of the following text, to suit the moods ${moods} as much as possible, while maintaining the intention and creativity of the user's tweet. IMPORTANT: DONT CHANGE THE ENTIRE TWEET, ONLY CHANGE WHAT IS ABSOLUTELY NEEDED TO REFLECT THE MOOD. ${!(inclEmoji) ? "Dont" : ""} include emojis. ${!(inclHashtag) ? "Dont" : ""} include suitable hashtags.`
+                    content: `I want you to act as a tweet enhancer. I will give you an input tweet. You will rephrase or modify only certain parts of the tweet to match the moods ${moods} as much as possible. The most important aspect of this is to keep the uniqueness and creativity of my tweet. IMPORTANT: YOU MUST NOT CHANGE THE ENTIRE TWEET, ONLY CHANGE WHAT IS ABSOLUTELY NEEDED TO REFLECT THE MOOD. DO NOT ADD NEW SENTENCES. Generate three such suggesitons and output them as a javascript parsable array without formatting, with each element having key 'tweet'. Make sure the output is in an array. ${!(inclEmoji) ? "Dont" : ""} include emojis. ${!(inclHashtag) ? "Dont" : ""} include suitable hashtags.`
                 },
                 {
                     role: 'user',

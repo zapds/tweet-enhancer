@@ -47,18 +47,30 @@
       });
 
     const data = await resp.json();
+    const generated = JSON.parse(data.result);
+    console.log('parsed data', generated);
     loading = false;
     const elem = document.getElementById("result");
     elem.scrollIntoView({
       behavior: 'smooth',
       block: 'center'
     });
-    return data;
+    return generated;
 
   }
 
   function handleClick() {
     promise = enhance();
+  }
+
+  function copyFunc(index) {
+    const text = document.getElementById(`gen${index}`).innerHTML;
+    navigator.clipboard.writeText(text);
+    document.getElementById(`gen${index}`).innerHTML = "Copied to clipboard";
+    setTimeout(() => {
+      document.getElementById(`gen${index}`).innerHTML = text;
+    }, 1000);
+    
   }
 
 </script>
@@ -104,12 +116,17 @@
     
 </div>
 
-<div class="flex flex-col" id="result">
+<div class="flex flex-col gap-2 items-center md:flex-row" id="result">
 {#if promise != null}
   {#await promise then data}
-    <p class="text-white text-center">{data.result}</p>
+    {#each data as item, i}
+      <button title={`Click to copy to clipboard`} id={`gen${i}`} on:click={() => {copyFunc(i)}} class="py-4 px-2 m-4 text-center basis-1/3 rounded-md text-white bg-black border border-white hover:bg-white hover:text-black transition-colors duration-200">
+        {item.tweet}
+      </button>
+      
+    {/each}
   {:catch error}
-    <p class="text-white">error {error.message}</p>
+    <p class="text-red">error {error.message}</p>
   {/await}
 {/if}
 </div>
