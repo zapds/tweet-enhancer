@@ -48,14 +48,14 @@
 
     const data = await resp.json();
     const generated = JSON.parse(data.result);
-    console.log('parsed data', generated);
+    console.log(generated);
     loading = false;
     const elem = document.getElementById("result");
     elem.scrollIntoView({
       behavior: 'smooth',
       block: 'center'
     });
-    return generated;
+    return [generated.tweet1, generated.tweet2, generated.tweet3]
 
   }
 
@@ -121,7 +121,7 @@
   {#await promise then data}
     {#each data as item, i}
       <button title={`Click to copy to clipboard`} id={`gen${i}`} on:click={() => {copyFunc(i)}} class="py-4 px-2 m-4 text-center basis-1/3 rounded-md text-white bg-black border border-white hover:bg-white hover:text-black transition-colors duration-200">
-        {item.tweet}
+        {item}
       </button>
       
     {/each}
