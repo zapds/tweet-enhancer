@@ -7,3 +7,15 @@ is a powerful tool crafted for to refine and enhance user's tweets, focusing on 
 # Todo
 - implement responsive design
 - add more options(?) (suggestions welcome)
+
+
+# Installation
+There is a live deployment on https://tweet-enhancer.vercel.app/
+If you want to deploy locally:
+```properties
+git clone https://github.com/Zapd0s/tweet-enhancer.git
+cd tweet-enhancer
+npm install
+npm run build
+npm run preview
+```
