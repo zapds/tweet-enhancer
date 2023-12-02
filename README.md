@@ -10,7 +10,7 @@ is a powerful tool crafted for to refine and enhance user's tweets, focusing on 
 
 
 # Installation
-There is a live deployment on https://tweet-enhancer.vercel.app/
+There is a live deployment on https://tweet-enhancer.vercel.app
 If you want to deploy locally:
 ```properties
 git clone https://github.com/Zapd0s/tweet-enhancer.git
